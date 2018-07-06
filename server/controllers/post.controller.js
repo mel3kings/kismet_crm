@@ -1,4 +1,5 @@
 import Post from '../models/post';
+import {addCustomer} from './customer.controller';
 import cuid from 'cuid';
 import slug from 'limax';
 import sanitizeHtml from 'sanitize-html';

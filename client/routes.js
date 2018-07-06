@@ -42,7 +42,7 @@ export default (
       }}
     />
     <Route
-      path="/customer"
+      path="/listcustomers"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./modules/Customer/pages/CustomerListPage/CustomerListPage').default);

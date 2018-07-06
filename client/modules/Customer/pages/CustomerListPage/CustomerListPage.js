@@ -1,24 +1,39 @@
-import React, { PropTypes, Component } from 'react';
-import { connect } from 'react-redux';
-
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {fetchCustomers} from "../../CustomerActions";
+import {getCustomers} from "../../CustomerReducer";
+import _ from 'lodash';
 class CustomerListPage extends Component {
   componentDidMount() {
-
+    this.props.dispatch(fetchCustomers());
   }
 
   render() {
     return (
       <div>
-        HEASDASD
+        <div className="listView">
+          test7
+          {this.renderItem()}
+        </div>
       </div>
     );
   }
+
+
+  renderItem() {
+    return _.map(this.props.customerData, data=>{
+      return (
+        <div>Name is: {data.firstName}
+        <br/> Last name is: {data.lastName}
+        </div>
+       );
+    })
+  }
 }
 
-// Retrieve data from store as props
 function mapStateToProps(state) {
   return {
+    customerData: getCustomers(state)
   };
 }
 
