@@ -5,7 +5,7 @@ export function addCustomer(req, res) {
     res.status(403).end();
   }
   const newCustomer = new Customer(req.body.post);
-  newCustomer.title = 'test';
+  newCustomer.title = sanitizeHtml(newCustomer.title);
   newCustomer.firstName = '123';
   newCustomer.lastName = '123';
   newCustomer.telephone = '123';

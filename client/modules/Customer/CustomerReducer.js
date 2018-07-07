@@ -1,19 +1,23 @@
-import {LIST_CUSTOMER, ADD_CUSTOMER} from "./CustomerActions";
+import {LIST_CUSTOMER, ADD_CUSTOMER, TOGGLE_ADD_CUSTOMER} from "./CustomerActions";
 
-const initialState = {data: []};
+const initialState = {showAddData: false, data: []};
 
 const CustomerReducer = (state = initialState, action) => {
-  console.log('returning2');
-    switch (action.type) {
-      case LIST_CUSTOMER:
-        console.log("listing");
-        return {
-          data: action.customers
-        };
+  switch (action.type) {
+    case LIST_CUSTOMER:
+      return {
+        data: action.customers
+      };
 
-      default:
-        return state;
-    }
+    case TOGGLE_ADD_CUSTOMER:
+      return{
+        ...state,
+        showAddData: !state.showAddData
+      };
+
+    default:
+      return state;
+  }
 };
 
 export const getCustomers = state => state.customer.data;
