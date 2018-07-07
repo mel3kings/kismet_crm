@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchCustomers, toggleAddCustomer} from "../../CustomerActions";
+import {fetchCustomers, toggleAddCustomer, addCustomer} from "../../CustomerActions";
 import {getCustomers} from "../../CustomerReducer";
 import _ from 'lodash';
-
-import styles from './CustomerListPage.css'
+import CustomerAddPage from './CustomerAddPage';
+import CustomerForm from './CustomerReduxAddPage';
 
 class CustomerListPage extends Component {
   componentDidMount() {
@@ -15,23 +15,25 @@ class CustomerListPage extends Component {
     this.props.dispatch(toggleAddCustomer());
   };
 
+  submitRedux = values => {
+    const customer = {
+      title: values.title,
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email
+    };
+    this.props.dispatch(addCustomer(customer));
+  };
+
+
   render() {
     return (
       <div>
         <button onClick={this.handleClick}>
           Add Customer
         </button>
+        <CustomerForm onSubmit={this.submitRedux}/>
         <br/>
-        <div className='test'>
-          <div className={styles['form-content']}>
-            <h2 className={styles['form-title']}>Add Customer</h2>
-            <input className={styles['form-field']} ref="name"/>
-            <input className={styles['form-field']} ref="title"/>
-            <textarea className={styles['form-field']} ref="content"/>
-            <a className={styles['post-submit-button']} href="#" onClick={this.addPost}>Submit</a>
-          </div>
-        </div>
-
         <div className="listView">
           <h4>Customer List</h4>
           {this.renderItem()}
@@ -44,7 +46,7 @@ class CustomerListPage extends Component {
   renderItem() {
     return _.map(this.props.customerData, data => {
       return (
-        <div>{data.firstName} {data.lastName}
+        <div>{data.title} {data.firstName} {data.lastName}
           <br/> Email: {data.email}
           <br/> Telephone: {data.telephone}
           <br/> Date Added: {data.dateAdded}

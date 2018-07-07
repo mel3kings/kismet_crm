@@ -1,16 +1,17 @@
 import Customer from '../models/customer';
-
+import sanitizeHtml from 'sanitize-html';
 export function addCustomer(req, res) {
-  if (!req.body.post.name || !req.body.post.title || !req.body.post.content) {
+  if (!req.body) {
     res.status(403).end();
   }
-  const newCustomer = new Customer(req.body.post);
+  console.log(req.body);
+  const newCustomer = new Customer(req.body.customer);
   newCustomer.title = sanitizeHtml(newCustomer.title);
-  newCustomer.firstName = '123';
-  newCustomer.lastName = '123';
-  newCustomer.telephone = '123';
-  newCustomer.email = '123';
-  newCustomer.car = '123';
+  newCustomer.firstName = sanitizeHtml(newCustomer.firstName);
+  newCustomer.lastName = sanitizeHtml(newCustomer.lastName);
+  newCustomer.telephone = sanitizeHtml(newCustomer.telephone);
+  newCustomer.email = sanitizeHtml(newCustomer.email);
+  newCustomer.car = sanitizeHtml(newCustomer.car);
   newCustomer.save((err, saved) => {
     if (err) {
       res.status(500).send(err);

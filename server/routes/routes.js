@@ -10,5 +10,5 @@ router.route('/posts').post(PostController.addPost);
 router.route('/posts/:cuid').delete(PostController.deletePost);
 
 router.route('/customers').get(CustomerController.getCustomers);
-
+router.route('/addCustomer').post(CustomerController.addCustomer)
 export default router;

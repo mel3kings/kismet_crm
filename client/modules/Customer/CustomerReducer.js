@@ -9,6 +9,12 @@ const CustomerReducer = (state = initialState, action) => {
         data: action.customers
       };
 
+    case ADD_CUSTOMER:
+      return{
+        ...state,
+        data: action.customers
+      };
+
     case TOGGLE_ADD_CUSTOMER:
       return{
         ...state,
