@@ -1,4 +1,4 @@
-import {LIST_CUSTOMER, ADD_CUSTOMER, TOGGLE_ADD_CUSTOMER} from "./CustomerActions";
+import {LIST_CUSTOMER, ADD_CUSTOMER, TOGGLE_ADD_CUSTOMER, DELETE_CUSTOMER} from "./CustomerActions";
 
 const initialState = {showAddData: false, data: []};
 
@@ -14,13 +14,19 @@ const CustomerReducer = (state = initialState, action) => {
       };
 
     case ADD_CUSTOMER:
-      return{
+      return {
         ...state,
         data: [action.customer, ...state.data],
       };
 
     case TOGGLE_ADD_CUSTOMER:
-      return{
+      return {
+        ...state,
+        showAddData: !state.showAddData
+      };
+
+    case DELETE_CUSTOMER:
+      return {
         ...state,
         showAddData: !state.showAddData
       };

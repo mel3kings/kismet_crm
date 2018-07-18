@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchCustomers, toggleAddCustomer, addCustomer} from "../../CustomerActions";
+import {fetchCustomers, toggleAddCustomer, addCustomer, deleteCustomer} from "../../CustomerActions";
 import {getCustomers} from "../../CustomerReducer";
 import _ from 'lodash';
 import styles from './CustomerListPage.css';
-import CustomerForm from './CustomerReduxAddPage';
+import CustomerForm from './CustomerForm';
 
 class CustomerListPage extends Component {
   componentDidMount() {
@@ -14,6 +14,7 @@ class CustomerListPage extends Component {
   handleClick = () => {
     this.props.dispatch(toggleAddCustomer());
   };
+
 
   submitRedux = values => {
     const customer = {
@@ -25,6 +26,11 @@ class CustomerListPage extends Component {
       car: values.car
     };
     this.props.dispatch(addCustomer(customer));
+  };
+
+  deleteCustomer = email =>{
+   // console.log("RECEIVED 2 DELETE" + email);
+    //this.props.dispatch(deleteCustomer(email));
   };
 
 
@@ -44,7 +50,6 @@ class CustomerListPage extends Component {
           <p className={styles['customer-header']}>Customer List</p>
           {this.renderItem()}
         </div>
-
       </div>
     );
   }
@@ -55,7 +60,7 @@ class CustomerListPage extends Component {
       return (
         <div>
           <button className={styles['post-delete-button']} onClick={this.handleClick}>
-          Delete
+           Delete
           </button>
           <p className={styles['customer-name']}>{data.title} {data.firstName} {data.lastName}</p>
           <p className={styles['customer-desc']}>Email: {data.email}

@@ -29,3 +29,14 @@ export function getCustomers(req, res) {
   });
 }
 
+export function deleteCustomer(req, res){
+  console.log("trying to delete customer with: " + req.params.email);
+  Customer.findOne({ email: req.params.email }).exec((err, customer) => {
+    if (err) {
+      res.status(500).send(err);
+    }else{
+      console.log("found" + customer);
+    }
+  });
+}
+
