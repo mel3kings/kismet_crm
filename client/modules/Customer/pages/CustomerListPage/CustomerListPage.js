@@ -20,7 +20,9 @@ class CustomerListPage extends Component {
       title: values.title,
       firstName: values.firstName,
       lastName: values.lastName,
-      email: values.email
+      email: values.email,
+      telephone: values.telephone,
+      car: values.car
     };
     this.props.dispatch(addCustomer(customer));
   };

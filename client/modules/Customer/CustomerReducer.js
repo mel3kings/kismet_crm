@@ -3,6 +3,10 @@ import {LIST_CUSTOMER, ADD_CUSTOMER, TOGGLE_ADD_CUSTOMER} from "./CustomerAction
 const initialState = {showAddData: false, data: []};
 
 const CustomerReducer = (state = initialState, action) => {
+  console.log(action.type);
+  console.log(action.customers);
+  console.log(action.customer);
+
   switch (action.type) {
     case LIST_CUSTOMER:
       return {
@@ -12,7 +16,7 @@ const CustomerReducer = (state = initialState, action) => {
     case ADD_CUSTOMER:
       return{
         ...state,
-        data: action.customers
+        data: [action.customer, ...state.data],
       };
 
     case TOGGLE_ADD_CUSTOMER:

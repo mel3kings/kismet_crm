@@ -16,13 +16,13 @@ let CustomerForm = props => {
         <Field placeholder="Last Name" className={styles['form-field']} name="lastName" component="input" type="text"/>
       </div>
       <div>
-        <Field placeholder="Telephone" className={styles['form-field']} name="phone" component="input" type="text"/>
+        <Field placeholder="Telephone" className={styles['form-field']} name="telephone" component="input" type="text"/>
       </div>
       <div>
         <Field placeholder="Email" className={styles['form-field']} name="email" component="input" type="text"/>
       </div>
       <div>
-        <Field placeholder="Car Details" className={styles['form-field']} name="email" component="textarea" type="text"/>
+        <Field placeholder="Car Details" className={styles['form-field']} name="car" component="textarea" type="text"/>
       </div>
       <button className={styles['post-submit-button']} type="submit">Submit</button>
     </form>

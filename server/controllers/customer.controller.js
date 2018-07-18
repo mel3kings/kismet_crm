@@ -12,11 +12,11 @@ export function addCustomer(req, res) {
   newCustomer.telephone = sanitizeHtml(newCustomer.telephone);
   newCustomer.email = sanitizeHtml(newCustomer.email);
   newCustomer.car = sanitizeHtml(newCustomer.car);
-  newCustomer.save((err, saved) => {
+  newCustomer.save((err, response) => {
     if (err) {
       res.status(500).send(err);
     }
-    res.json({ post: saved });
+    res.json({ customer: response });
   });
 }
 
