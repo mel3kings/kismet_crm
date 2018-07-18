@@ -10,9 +10,7 @@ import bg from '../../header-bk.png';
 export function Footer() {
   return (
     <div style={{ background: `#FFF url(${bg}) center` }} className={styles.footer}>
-
-      ASDASd
-      <p>&copy; 2016 &middot; Hashnode &middot; LinearBytes Inc.</p>
+      Footer &copy; 2018 &middot; Melchor Tatlonghari &middot;
       <p><FormattedMessage id="twitterMessage" /> : <a href="https://twitter.com/@mern_io" target="_Blank">@mern_io</a></p>
     </div>
   );

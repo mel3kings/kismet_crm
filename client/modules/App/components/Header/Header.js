@@ -10,7 +10,7 @@ export function Header(props, context) {
     <div className={styles.header}>
       <div className={styles.content}>
         <h1 className={styles['site-title']}>
-          <Link to="/" ><FormattedMessage id="siteTitle" /></Link>
+          <Link to="/" >Kismet CRM</Link>
         </h1>
         {
           context.router.isActive('/', true)

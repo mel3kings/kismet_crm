@@ -18,7 +18,7 @@ class CustomerListPage extends Component {
   submitRedux = values => {
     const customer = {
       title: values.title,
-      firstName: values.firstName,
+      firstName:- values.firstName,
       lastName: values.lastName,
       email: values.email,
       telephone: values.telephone,
@@ -41,7 +41,7 @@ class CustomerListPage extends Component {
         </div>
         <br/>
         <div className="listView">
-          <h4>Customer List</h4>
+          <p className={styles['customer-header']}>Customer List</p>
           {this.renderItem()}
         </div>
 
@@ -53,11 +53,13 @@ class CustomerListPage extends Component {
   renderItem() {
     return _.map(this.props.customerData, data => {
       return (
-        <div>{data.title} {data.firstName} {data.lastName}
-          <br/> Email: {data.email}
-          <br/> Telephone: {data.telephone}
-          <br/> Date Added: {data.dateAdded}
-          <br/>
+        <div >
+          <p className={styles['customer-name']}>{data.title} {data.firstName} {data.lastName}</p>
+          <p className={styles['customer-desc']}>Email: {data.email}
+            <br/> Telephone: {data.telephone}
+             <br/> Date Added: {data.dateAdded}
+          </p>
+          <hr className={styles.divider} />
         </div>
       );
     })
