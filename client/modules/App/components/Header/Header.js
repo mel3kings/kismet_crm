@@ -4,10 +4,11 @@ import { FormattedMessage } from 'react-intl';
 
 // Import Style
 import styles from './Header.css';
+import bg from '../../header-bk.png';
 
 export function Header(props, context) {
   return (
-    <div className={styles.header}>
+    <div style={{ background: `#000 url(${bg})` }} className={styles.header}>
       <div className={styles.content}>
         <h1 className={styles['site-title']}>
           <Link to="/" >Kismet CRM</Link>

@@ -18,7 +18,7 @@ class CustomerListPage extends Component {
   submitRedux = values => {
     const customer = {
       title: values.title,
-      firstName:- values.firstName,
+      firstName: -values.firstName,
       lastName: values.lastName,
       email: values.email,
       telephone: values.telephone,
@@ -53,13 +53,16 @@ class CustomerListPage extends Component {
   renderItem() {
     return _.map(this.props.customerData, data => {
       return (
-        <div >
+        <div>
+          <button className={styles['post-delete-button']} onClick={this.handleClick}>
+          Delete
+          </button>
           <p className={styles['customer-name']}>{data.title} {data.firstName} {data.lastName}</p>
           <p className={styles['customer-desc']}>Email: {data.email}
             <br/> Telephone: {data.telephone}
-             <br/> Date Added: {data.dateAdded}
+            <br/> Date Added: {data.dateAdded}
           </p>
-          <hr className={styles.divider} />
+          <hr className={styles.divider}/>
         </div>
       );
     })
@@ -67,7 +70,6 @@ class CustomerListPage extends Component {
 }
 
 function mapStateToProps(state) {
-
   return {
     customerData: getCustomers(state),
     showAddData: state.customer.showAddData

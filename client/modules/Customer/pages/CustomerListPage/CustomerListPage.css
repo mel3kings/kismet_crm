@@ -61,6 +61,19 @@ textarea {
   border-radius: 4px;
 }
 
+
+.post-delete-button {
+  display: inline-block;
+  float:right;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: #FFF;
+  background: #EF5350;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+
 .appear {
   padding: 10px 10px;
   display: block;

@@ -23,7 +23,7 @@ module.exports = {
   output: {
     path: __dirname,
     filename: 'app.js',
-    publicPath: 'http://0.0.0.0:8000/',
+    publicPath: 'http://localhost:8000/',
   },
 
   resolve: {
@@ -49,7 +49,7 @@ module.exports = {
               localIdentName: '[name]__[local]__[hash:base64:5]',
               modules: true,
               importLoaders: 1,
-              sourceMap: true,
+              sourceMa: true,
             },
           },
           {
