@@ -1,27 +1,33 @@
-import { Field, reduxForm } from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 import React from 'react'
+import styles from './CustomerListPage.css';
 
 let CustomerForm = props => {
-  const { handleSubmit } = props
+  const {handleSubmit} = props
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="firstName">First Name</label>
-        <Field name="firstName" component="input" type="text" />
+        <Field placeholder="Title" className={styles['form-field-short']} name="title" component="input" type="text"/>
       </div>
       <div>
-        <label htmlFor="lastName">Last Name</label>
-        <Field name="lastName" component="input" type="text" />
+        <Field placeholder="First Name" className={styles['form-field']} name="firstName" component="input" type="text"/>
       </div>
       <div>
-        <label htmlFor="email">Email</label>
-        <Field name="email" component="input" type="email" />
+        <Field placeholder="Last Name" className={styles['form-field']} name="lastName" component="input" type="text"/>
       </div>
-      <button type="submit">Submit</button>
+      <div>
+        <Field placeholder="Telephone" className={styles['form-field']} name="phone" component="input" type="text"/>
+      </div>
+      <div>
+        <Field placeholder="Email" className={styles['form-field']} name="email" component="input" type="text"/>
+      </div>
+      <div>
+        <Field placeholder="Car Details" className={styles['form-field']} name="email" component="textarea" type="text"/>
+      </div>
+      <button className={styles['post-submit-button']} type="submit">Submit</button>
     </form>
   )
 };
-
 
 
 CustomerForm = reduxForm({

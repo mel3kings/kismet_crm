@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {fetchCustomers, toggleAddCustomer, addCustomer} from "../../CustomerActions";
 import {getCustomers} from "../../CustomerReducer";
 import _ from 'lodash';
-import CustomerAddPage from './CustomerAddPage';
+import styles from './CustomerListPage.css';
 import CustomerForm from './CustomerReduxAddPage';
 
 class CustomerListPage extends Component {
@@ -27,17 +27,22 @@ class CustomerListPage extends Component {
 
 
   render() {
+    const display = `${styles.form} ${(this.props.showAddData ? styles.appear : '')}`;
     return (
-      <div>
-        <button onClick={this.handleClick}>
-          Add Customer
+      <div className={styles['form-content']}>
+        <button className={styles['post-submit-button']} onClick={this.handleClick}>
+          Add New Customer
         </button>
-        <CustomerForm onSubmit={this.submitRedux}/>
+        <div className={display}>
+          <h2 className={styles['form-title']}>Add Customer</h2>
+          <CustomerForm onSubmit={this.submitRedux}/>
+        </div>
         <br/>
         <div className="listView">
           <h4>Customer List</h4>
           {this.renderItem()}
         </div>
+
       </div>
     );
   }
@@ -58,8 +63,10 @@ class CustomerListPage extends Component {
 }
 
 function mapStateToProps(state) {
+
   return {
-    customerData: getCustomers(state)
+    customerData: getCustomers(state),
+    showAddData: state.customer.showAddData
   };
 }
 
