@@ -57,11 +57,10 @@ export function deleteCustomerAction(email) {
 }
 
 export function deleteCustomer(email) {
-  console.log('recieved call to delete:' + email);
   return (dispatch) => {
     return callApi('deleteCustomer', 'post', {
-      email:{
-        email: "test"
+      customer:{
+        email: email
       }
     }).then(res => dispatch(deleteCustomerAction()));
   }

@@ -27,8 +27,7 @@ const CustomerReducer = (state = initialState, action) => {
 
     case DELETE_CUSTOMER:
       return {
-        ...state,
-        showAddData: !state.showAddData
+        ...state
       };
 
     default:

@@ -4,7 +4,6 @@ export function addCustomer(req, res) {
   if (!req.body) {
     res.status(403).end();
   }
-  console.log(req.body);
   const newCustomer = new Customer(req.body.customer);
   newCustomer.title = sanitizeHtml(newCustomer.title);
   newCustomer.firstName = sanitizeHtml(newCustomer.firstName);
@@ -30,13 +29,17 @@ export function getCustomers(req, res) {
 }
 
 export function deleteCustomer(req, res){
-  console.log("trying to delete customer with: " + req.params.email);
-  Customer.findOne({ email: req.params.email }).exec((err, customer) => {
+  console.log("trying to delete customer with: " + req.body.customer.email);
+  Customer.findOne({ email: req.body.customer.email }).exec((err, customer) => {
     if (err) {
       res.status(500).send(err);
-    }else{
-      console.log("found" + customer);
+    } else{
+      console.log("about to delete " + customer.email);
     }
+
+    customer.remove(() => {
+      res.status(200).end();
+    });
   });
 }
 

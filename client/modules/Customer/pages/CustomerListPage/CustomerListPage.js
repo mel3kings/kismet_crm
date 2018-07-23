@@ -15,6 +15,10 @@ class CustomerListPage extends Component {
     this.props.dispatch(toggleAddCustomer());
   };
 
+  handleDelete = (email) => {
+    this.props.dispatch(deleteCustomer(email));
+  };
+
 
   submitRedux = values => {
     const customer = {
@@ -26,11 +30,6 @@ class CustomerListPage extends Component {
       car: values.car
     };
     this.props.dispatch(addCustomer(customer));
-  };
-
-  deleteCustomer = email =>{
-   // console.log("RECEIVED 2 DELETE" + email);
-    //this.props.dispatch(deleteCustomer(email));
   };
 
 
@@ -59,9 +58,11 @@ class CustomerListPage extends Component {
     return _.map(this.props.customerData, data => {
       return (
         <div>
-          <button className={styles['post-delete-button']} onClick={this.handleClick}>
-           Delete
-          </button>
+          <a href="#" className={styles['post-delete-button']} onClick={() => {
+            this.handleDelete(data.email)
+          }}>
+            Delete
+          </a>
           <p className={styles['customer-name']}>{data.title} {data.firstName} {data.lastName}</p>
           <p className={styles['customer-desc']}>Email: {data.email}
             <br/> Telephone: {data.telephone}
