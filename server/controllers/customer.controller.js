@@ -1,5 +1,6 @@
 import Customer from '../models/customer';
 import sanitizeHtml from 'sanitize-html';
+
 export function addCustomer(req, res) {
   if (!req.body) {
     res.status(403).end();
@@ -14,8 +15,9 @@ export function addCustomer(req, res) {
   newCustomer.save((err, response) => {
     if (err) {
       res.status(500).send(err);
+    } else {
+      res.json({customer: response});
     }
-    res.json({ customer: response });
   });
 }
 
@@ -23,23 +25,23 @@ export function getCustomers(req, res) {
   Customer.find().sort('-dateAdded').exec((err, customers) => {
     if (err) {
       res.status(500).send(err);
+    } else {
+      res.json({customers});
     }
-    res.json({ customers });
   });
 }
 
-export function deleteCustomer(req, res){
+export function deleteCustomer(req, res) {
   console.log("trying to delete customer with: " + req.body.customer.email);
-  Customer.findOne({ email: req.body.customer.email }).exec((err, customer) => {
+  Customer.findOne({email: req.body.customer.email}).exec((err, customer) => {
     if (err) {
       res.status(500).send(err);
-    } else{
+    } else {
       console.log("about to delete " + customer.email);
+      customer.remove(() => {
+        res.status(200).end();
+      });
     }
-
-    customer.remove(() => {
-      res.status(200).end();
-    });
   });
 }
 
