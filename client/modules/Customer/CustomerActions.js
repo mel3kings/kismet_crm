@@ -62,6 +62,6 @@ export function deleteCustomer(email) {
       customer:{
         email: email
       }
-    }).then(res => dispatch(deleteCustomerAction()));
+    }).then(res => dispatch(deleteCustomerAction(email)));
   }
 }

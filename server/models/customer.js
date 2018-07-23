@@ -6,7 +6,7 @@ const customer = new Schema({
   firstName: { type: 'String', required: true },
   lastName: {type: 'String', required: true},
   telephone: {type: 'String', required: true},
-  email: {type:'String', required: true},
+  email: {type:'String', required: true, unique: true},
   car: {type:'String', required: true},
   dateAdded: { type: 'Date', default: Date.now, required: true }
 });

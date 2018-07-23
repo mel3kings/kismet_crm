@@ -23,7 +23,7 @@ class CustomerListPage extends Component {
   submitRedux = values => {
     const customer = {
       title: values.title,
-      firstName: -values.firstName,
+      firstName: values.firstName,
       lastName: values.lastName,
       email: values.email,
       telephone: values.telephone,

@@ -3,10 +3,6 @@ import {LIST_CUSTOMER, ADD_CUSTOMER, TOGGLE_ADD_CUSTOMER, DELETE_CUSTOMER} from 
 const initialState = {showAddData: false, data: []};
 
 const CustomerReducer = (state = initialState, action) => {
-  console.log(action.type);
-  console.log(action.customers);
-  console.log(action.customer);
-
   switch (action.type) {
     case LIST_CUSTOMER:
       return {
@@ -27,7 +23,9 @@ const CustomerReducer = (state = initialState, action) => {
 
     case DELETE_CUSTOMER:
       return {
-        ...state
+        ...state,
+        data: state.data.filter(customer => customer.email !== action.email),
+        showAddData: false
       };
 
     default:
