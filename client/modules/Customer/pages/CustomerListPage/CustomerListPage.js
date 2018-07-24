@@ -21,19 +21,15 @@ class CustomerListPage extends Component {
 
 
   submitRedux = values => {
-    if(!values.title || !values.firstName || !values.lastName || !values.email || !values.telephone || !values.car){
-      alert("Please fill up all the fields");
-    } else{
-      const customer = {
-        title: values.title,
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-        telephone: values.telephone,
-        car: values.car
-      };
-      this.props.dispatch(addCustomer(customer));
-    }
+    const customer = {
+      title: values.title,
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      telephone: values.telephone,
+      car: values.car
+    };
+    this.props.dispatch(addCustomer(customer));
   };
 
 

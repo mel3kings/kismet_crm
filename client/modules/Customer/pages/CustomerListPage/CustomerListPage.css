@@ -105,3 +105,10 @@ textarea {
   width: 250px;
   margin: 16px auto 0;
 }
+
+.error{
+  font-size: 14px;
+  font-weight: bolder;
+  color: #EF5350;
+  margin: 5px;
+}
