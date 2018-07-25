@@ -1,4 +1,5 @@
 import Customer from '../models/customer';
+import {saveEvent} from './event.controller';
 import sanitizeHtml from 'sanitize-html';
 import cuid from 'cuid';
 
@@ -18,6 +19,8 @@ export function addCustomer(req, res) {
     if (err) {
       res.status(500).send(err);
     } else {
+      console.log("returning response");
+      saveEvent("New Customer Added", newCustomer.cuid);
       res.json({customer: response});
     }
   });
@@ -37,9 +40,10 @@ export function deleteCustomer(req, res) {
   console.log("trying to delete customer with: " + req.body.customer.email);
   Customer.findOne({email: req.body.customer.email}).exec((err, customer) => {
     if (err) {
+      saveEvent("Error on delete on email: " + customer.email, customer.cuid);
       res.status(500).send(err);
     } else {
-      console.log("about to delete " + customer.email);
+      saveEvent("Delete Customer with email: " + customer.email, customer.cuid);
       customer.remove(() => {
         res.status(200).end();
       });

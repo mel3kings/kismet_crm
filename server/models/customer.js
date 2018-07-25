@@ -9,8 +9,7 @@ const customer = new Schema({
   email: {type:'String', required: true, unique: true},
   car: {type:'String', required: true},
   cuid: {type: 'String', required: true},
-  dateAdded: { type: 'Date', default: Date.now, required: true },
-  regoDate: { type: 'Date', default: Date}
+  dateAdded: { type: 'Date', default: Date.now, required: true }
 });
 
 export default mongoose.model('Customer', customer);
