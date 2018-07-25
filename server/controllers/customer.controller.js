@@ -27,7 +27,7 @@ export function addCustomer(req, res) {
 }
 
 export function getCustomers(req, res) {
-  Customer.find().sort('-dateAdded').exec((err, customers) => {
+  Customer.find().sort('-dateAdded').limit(50).exec((err, customers) => {
     if (err) {
       res.status(500).send(err);
     } else {

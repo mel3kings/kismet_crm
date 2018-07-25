@@ -10,7 +10,10 @@ class Menu extends React.Component{
         </li>
 
         <li className={styles['sidebarlink']}>
-          <Link className={styles['sidebarlinktest']} to="/"> Emails</Link>
+          <Link className={styles['sidebarlinktest']} to="/emails"> Emails</Link>
+        </li>
+        <li className={styles['sidebarlink']}>
+          <Link className={styles['sidebarlinktest']} to="/events"> Events</Link>
         </li>
       </ul>
     </div>

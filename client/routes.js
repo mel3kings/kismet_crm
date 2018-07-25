@@ -57,6 +57,15 @@ export default (
         });
       }}
     />
+    <Route
+      path="/events"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Events/pages/EventsListPage/EventsListPage').default);
+        });
+      }}
+    />
+
 
   </Route>
 
