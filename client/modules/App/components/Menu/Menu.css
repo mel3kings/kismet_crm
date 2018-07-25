@@ -1,0 +1,34 @@
+.sidebar {
+  height:auto;
+  width: 200px;
+  z-index: 1;
+  background-color: #616161;
+  float:left;
+ }
+
+.sidebarlink{
+  padding: 8px;
+  text-decoration: none;
+  font-size: 20px;
+  color:#dddddd;
+  display: block;
+}
+
+.sidebarlinktest:link{
+  text-decoration: none;
+  color:#dddddd;
+}
+.sidebarlinktest:visited{
+  text-decoration: none;
+  color:#dddddd;
+}
+.sidebarlinktest:active{
+  text-decoration: none;
+  color:#dddddd;
+}
+
+.sidebarlinktest:hover{
+  background: dodgerblue;
+  text-decoration: none;
+
+}
