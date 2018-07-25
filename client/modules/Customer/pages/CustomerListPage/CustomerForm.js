@@ -30,7 +30,6 @@ const renderField = ({input, placeholder, type, className, name, meta: {touched,
       {touched && ((error && <span className={styles['error']}>{error}</span>))}
       <br/>
       <input {...input} placeholder={placeholder} type={type} name={name} className={className}/>
-
     </div>
   </div>
 );

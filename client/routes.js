@@ -49,6 +49,14 @@ export default (
         });
       }}
     />
+    <Route
+      path="/customers/:letter"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Customer/pages/CustomerListPage/CustomerListPage').default);
+        });
+      }}
+    />
 
   </Route>
 

@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchCustomers, toggleAddCustomer, addCustomer, deleteCustomer} from "../../CustomerActions";
-import {getCustomers} from "../../CustomerReducer";
 import _ from 'lodash';
 import styles from './CustomerListPage.css';
+
+import {fetchCustomers, toggleAddCustomer, addCustomer, deleteCustomer} from "../../CustomerActions";
+import {getCustomers} from "../../CustomerReducer";
 import CustomerForm from './CustomerForm';
+import Letters from './CustomerAlphabet';
 
 class CustomerListPage extends Component {
   componentDidMount() {
@@ -29,7 +31,17 @@ class CustomerListPage extends Component {
       telephone: values.telephone,
       car: values.car
     };
+
+
     this.props.dispatch(addCustomer(customer));
+    values.title="";
+    values.firstName="";
+    values.lastName="";
+    values.email="";
+    values.telephone="";
+    values.car="";
+    alert("Add Customer Request sent");
+
   };
 
 
@@ -46,7 +58,7 @@ class CustomerListPage extends Component {
         </div>
         <br/>
         <div className="listView">
-          <p className={styles['customer-header']}>Customer List</p>
+          <p className={styles['customer-header']}> {!this.props.letter ? '' : 'Letter ' + this.props.letter} Customer List </p>
           {this.renderItem()}
         </div>
       </div>
@@ -75,10 +87,11 @@ class CustomerListPage extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
     customerData: getCustomers(state),
-    showAddData: state.customer.showAddData
+    showAddData: state.customer.showAddData,
+    letter : ownProps.params.letter
   };
 }
 

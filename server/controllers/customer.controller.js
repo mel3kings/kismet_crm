@@ -1,5 +1,6 @@
 import Customer from '../models/customer';
 import sanitizeHtml from 'sanitize-html';
+import cuid from 'cuid';
 
 export function addCustomer(req, res) {
   if (!req.body) {
@@ -12,6 +13,7 @@ export function addCustomer(req, res) {
   newCustomer.telephone = sanitizeHtml(newCustomer.telephone);
   newCustomer.email = sanitizeHtml(newCustomer.email);
   newCustomer.car = sanitizeHtml(newCustomer.car);
+  newCustomer.cuid = cuid();
   newCustomer.save((err, response) => {
     if (err) {
       res.status(500).send(err);
