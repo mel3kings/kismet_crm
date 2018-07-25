@@ -13,6 +13,7 @@ const CustomerReducer = (state = initialState, action) => {
       return {
         ...state,
         data: [action.customer, ...state.data],
+        showAddData: false
       };
 
     case TOGGLE_ADD_CUSTOMER:

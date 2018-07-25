@@ -18,4 +18,5 @@ Customer List
 #### TODO
 - datepicker
 - email sender job
+- load test 13k users
 

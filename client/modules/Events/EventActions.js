@@ -11,7 +11,7 @@ export function listEvents(events) {
 
 export function fetchEvents() {
   return (dispatch) => {
-    return callApi('getEvents').then(res => {
+    return callApi('events').then(res => {
       dispatch(listEvents(res.events));
     });
   };

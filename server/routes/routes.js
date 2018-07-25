@@ -14,6 +14,6 @@ router.route('/customers').get(CustomerController.getCustomers);
 router.route('/addCustomer').post(CustomerController.addCustomer);
 router.route('/deleteCustomer').post(CustomerController.deleteCustomer);
 
-router.route('/getEvents').get(EventController.getLatestEvents);
+router.route('/events').get(EventController.getLatestEvents);
 
 export default router;

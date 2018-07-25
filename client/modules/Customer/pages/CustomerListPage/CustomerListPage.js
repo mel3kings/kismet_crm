@@ -6,7 +6,6 @@ import styles from './CustomerListPage.css';
 import {fetchCustomers, toggleAddCustomer, addCustomer, deleteCustomer} from "../../CustomerActions";
 import {getCustomers} from "../../CustomerReducer";
 import CustomerForm from './CustomerForm';
-import Letters from './CustomerAlphabet';
 
 class CustomerListPage extends Component {
   componentDidMount() {
@@ -58,7 +57,7 @@ class CustomerListPage extends Component {
         </div>
         <br/>
         <div className="listView">
-          <p className={styles['customer-header']}> {!this.props.letter ? '' : 'Letter ' + this.props.letter} Customer List </p>
+          <p className={styles['customer-header']}> {!this.props.letter ? '' : 'Letter ' + this.props.letter} Customer List (Last 50) </p>
           {this.renderItem()}
         </div>
       </div>

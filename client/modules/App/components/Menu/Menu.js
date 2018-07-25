@@ -6,14 +6,16 @@ class Menu extends React.Component{
     return   <div className={styles['sidebar']}>
       <ul>
         <li className={styles['sidebarlink']}>
-          <Link className={styles['sidebarlinktest']} to="/"> Customers</Link>
+          <Link className={styles['sidebarlinktest']} to="/"> Add Customers</Link>
         </li>
-
         <li className={styles['sidebarlink']}>
-          <Link className={styles['sidebarlinktest']} to="/emails"> Emails</Link>
+          <Link className={styles['sidebarlinktest']} to="/search"> Search Customers</Link>
         </li>
         <li className={styles['sidebarlink']}>
           <Link className={styles['sidebarlinktest']} to="/events"> Events</Link>
+        </li>
+        <li className={styles['sidebarlink']}>
+          <Link className={styles['sidebarlinktest']} to="/emails"> Emails</Link>
         </li>
       </ul>
     </div>
