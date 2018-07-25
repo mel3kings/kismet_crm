@@ -77,7 +77,7 @@ class CustomerListPage extends Component {
           <p className={styles['customer-name']}>{data.title} {data.firstName} {data.lastName}</p>
           <p className={styles['customer-desc']}>Email: {data.email}
             <br/> Telephone: {data.telephone}
-            <br/> Date Added: {data.dateAdded}
+            <br/> Date Added: {new Date(data.dateAdded).toLocaleString()}
           </p>
           <hr className={styles.divider}/>
         </div>

@@ -22,7 +22,7 @@ class EventsListPage extends Component {
     return _.map(this.props.eventData, data => {
       return (
         <div>
-          <b>{data.event_details} </b> On  <i>{data.date_done}</i>
+          <b>{data.event_details} </b> On  <i>{new Date(data.date_done).toLocaleString()}</i>
           <hr className={styles.divider}/>
         </div>
       );

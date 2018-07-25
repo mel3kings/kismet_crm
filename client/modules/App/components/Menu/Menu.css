@@ -30,5 +30,8 @@
 .sidebarlinktest:hover{
   background: dodgerblue;
   text-decoration: none;
+}
 
+.sidebarlink:hover{
+  background: dodgerblue;
 }
