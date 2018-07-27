@@ -13,6 +13,7 @@ router.route('/posts/:cuid').delete(PostController.deletePost);
 router.route('/customers').get(CustomerController.getCustomers);
 router.route('/addCustomer').post(CustomerController.addCustomer);
 router.route('/deleteCustomer').post(CustomerController.deleteCustomer);
+router.route('/searchCustomer').get(CustomerController.searchCustomer);
 
 router.route('/events').get(EventController.getLatestEvents);
 

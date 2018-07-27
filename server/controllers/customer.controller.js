@@ -36,6 +36,10 @@ export function getCustomers(req, res) {
   });
 }
 
+export function searchCustomer(req, res){
+  console.log(req.body);
+}
+
 export function deleteCustomer(req, res) {
   console.log("trying to delete customer with: " + req.body.customer.email);
   Customer.findOne({email: req.body.customer.email}).exec((err, customer) => {
