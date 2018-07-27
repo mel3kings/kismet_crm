@@ -1,6 +1,6 @@
 import React from 'react';
-import {reduxForm} from "redux-form";
-
+import {reduxForm, Field} from "redux-form";
+import styles from './SearchForm.css';
 
 const renderSearchField = ({input, placeholder, type, className, name}) => (
   <div>
@@ -12,14 +12,15 @@ let SearchForm = props => {
   const {handleSubmit} = props;
   return (<form onSubmit={handleSubmit}>
     <div>
-      <Field placeholder="Search Customer" className="test" name="search" component={renderSearchField}
+      <Field placeholder="Search Customer" className={styles['form-field']} name="search"  component={renderSearchField}
              type="text"/>
+      <button className={styles['post-submit-button']} type="submit">Submit</button>
     </div>
   </form>)
 };
 
 SearchForm = reduxForm({
   form: 'search'
-})(SearchForm)
+})(SearchForm);
 
 export default SearchForm

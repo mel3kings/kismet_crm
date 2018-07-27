@@ -1,4 +1,4 @@
-import SEARCH_ACTION from './SearchActions';
+import {SEARCH_ACTION} from './SearchActions';
 
 const initialState = {searchResults: []};
 

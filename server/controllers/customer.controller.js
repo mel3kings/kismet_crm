@@ -36,8 +36,23 @@ export function getCustomers(req, res) {
   });
 }
 
-export function searchCustomer(req, res){
-  console.log(req.body);
+export function searchCustomer(req, res) {
+  Customer.find().or({
+    email: {$regex: req.body.searchAction.term}
+  }).or({
+    firstName: {$regex: req.body.searchAction.term}
+  }).or({
+    lastName: {$regex: req.body.searchAction.term}
+  }).limit(50).exec((err, customers) => {
+    console.log("FOUND RESPONSE:");
+    console.log(customers);
+    saveEvent("Search Result found with " + customers.length, null);
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.json({customers});
+    }
+  });
 }
 
 export function deleteCustomer(req, res) {

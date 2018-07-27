@@ -12,10 +12,10 @@ export function searchCustomer(searchResponse) {
 
 export function searchCustomerAction(searchValue) {
   return (dispatch) => {
-    return callApi("/search", "get", {
+    return callApi("/search", "post", {
       searchAction: {
         term: searchValue
       }
-    }).then(res => dispatch(searchCustomer(res.result)));
+    }).then(res => dispatch(searchCustomer(res))).error(err=>{console.log(err);});
   }
 }

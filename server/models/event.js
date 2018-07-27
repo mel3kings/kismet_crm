@@ -9,6 +9,7 @@ const event = new Schema({
   date_done: { type: 'Date', default: Date.now, required: true },
   amount: {type:'Number', required: false},
   employee: {type: 'String', required: false},
+  type: {type:'String', required: false}
   }
 );
 
