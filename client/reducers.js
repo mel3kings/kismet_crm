@@ -8,6 +8,7 @@ import app from './modules/App/AppReducer';
 import posts from './modules/Post/PostReducer';
 import customer from './modules/Customer/CustomerReducer';
 import event from './modules/Events/EventReducer';
+import search from './modules/Search/SearchReducer';
 import intl from './modules/Intl/IntlReducer';
 import { reducer as formReducer } from 'redux-form'
 
@@ -17,5 +18,6 @@ export default combineReducers({
   posts,
   customer,
   event,
+  search,
   form: formReducer
 });

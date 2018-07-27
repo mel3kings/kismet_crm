@@ -15,6 +15,7 @@ export function addCustomer(req, res) {
   newCustomer.email = sanitizeHtml(newCustomer.email);
   newCustomer.car = sanitizeHtml(newCustomer.car);
   newCustomer.cuid = cuid();
+  newCustomer.searchValue = newCustomer.firstName.toLowerCase() + newCustomer.lastName.toLowerCase() + newCustomer.email.toLowerCase();
   newCustomer.save((err, response) => {
     if (err) {
       res.status(500).send(err);
@@ -38,11 +39,7 @@ export function getCustomers(req, res) {
 
 export function searchCustomer(req, res) {
   Customer.find().or({
-    email: {$regex: req.body.searchAction.term}
-  }).or({
-    firstName: {$regex: req.body.searchAction.term}
-  }).or({
-    lastName: {$regex: req.body.searchAction.term}
+    searchValue: {$regex: req.body.searchAction.term}
   }).limit(50).exec((err, customers) => {
     console.log("FOUND RESPONSE:");
     console.log(customers);

@@ -2,10 +2,10 @@ import callApi from '../../util/apiCaller';
 
 export const SEARCH_ACTION = 'search_action';
 
-export function searchCustomer(searchResponse) {
+export function searchCustomer(searchResults) {
   return {
     type: SEARCH_ACTION,
-    searchResponse
+    searchResults
   }
 }
 
