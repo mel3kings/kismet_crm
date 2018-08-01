@@ -35,6 +35,7 @@ export function addCustomerAction(customer) {
 
 export function addCustomer(customer) {
   console.log("trying to add customer");
+  console.log(customer);
   return (dispatch) => {
     return callApi('addCustomer', 'post', {
       customer: {
@@ -43,7 +44,8 @@ export function addCustomer(customer) {
         lastName: customer.lastName,
         email: customer.email,
         telephone: customer.telephone,
-        car: customer.car
+        car: customer.car,
+        regoDate: customer.regoDate
       },
     }).then(res => dispatch(addCustomerAction(res.customer)));
   }

@@ -22,6 +22,9 @@ const validate = values => {
   if (!values.email) {
     errors.email = "Email is Required";
   }
+  if(!values.regoDate){
+    errors.regoDate = "Rego Expiry Date is Required";
+  }
 
   return errors;
 };
@@ -36,11 +39,11 @@ const renderField = ({input, placeholder, type, className, name, meta: {touched,
   </div>
 );
 
-const renderDatePicker = ({input, placeholder, className, defaultValue, meta: {touched, error}}) => (
+const renderDatePicker = ({input, placeholder, name, className, defaultValue, meta: {touched, error}}) => (
   <div>
+    {touched && ((error && <span className={styles['error']}>{error}</span>))}
     <DatePicker {...input} placeholderText={placeholder} dateForm="MM/DD/YYYY"
-                selected={input.value ? moment(input.value) : null} className={className}/>
-    {touched && error && <span>{error}</span>}
+                selected={input.value ? moment(input.value) : null} className={className} name={name}/>
   </div>
 );
 

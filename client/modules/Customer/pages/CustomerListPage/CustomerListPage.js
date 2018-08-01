@@ -28,7 +28,8 @@ class CustomerListPage extends Component {
       lastName: values.lastName,
       email: values.email,
       telephone: values.telephone,
-      car: values.car
+      car: values.car,
+      regoDate: values.regoDate
     };
 
 
@@ -39,6 +40,7 @@ class CustomerListPage extends Component {
     values.email="";
     values.telephone="";
     values.car="";
+    values.regoDate="";
     alert("Add Customer Request sent");
 
   };
