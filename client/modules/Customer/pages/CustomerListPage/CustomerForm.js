@@ -1,7 +1,9 @@
 import {Field, reduxForm} from 'redux-form';
 import React from 'react'
-import styles from './CustomerListPage.css';
-
+import styles from './style/CustomerListPage.css';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import './style/react-datepicker-cssmodules.css';
 
 const validate = values => {
   const errors = {};
@@ -34,8 +36,16 @@ const renderField = ({input, placeholder, type, className, name, meta: {touched,
   </div>
 );
 
+const renderDatePicker = ({input, placeholder, className, defaultValue, meta: {touched, error}}) => (
+  <div>
+    <DatePicker {...input} placeholderText={placeholder} dateForm="MM/DD/YYYY"
+                selected={input.value ? moment(input.value) : null} className={className}/>
+    {touched && error && <span>{error}</span>}
+  </div>
+);
+
 let CustomerForm = props => {
-  const {handleSubmit, reset,submitting, pristine} = props
+  const {handleSubmit, reset, submitting, pristine} = props
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -58,10 +68,17 @@ let CustomerForm = props => {
         <Field placeholder="Email" className={styles['form-field']} name="email" component={renderField} type="text"/>
       </div>
       <div>
-        <Field placeholder="Car Details" className={styles['form-field']} name="car" component="textarea" type="textarea"/>
+        <Field placeholder="Rego Expiry Date" className={styles['form-field']} name="regoDate"
+               component={renderDatePicker}/>
+      </div>
+      <div>
+        <Field placeholder="Car Details" className={styles['form-field']} name="car" component="textarea"
+               type="textarea"/>
       </div>
       <button className={styles['post-submit-button']} type="submit">Submit</button>
-      <button className={styles['post-submit-button']} type="button" disabled={pristine || submitting} onClick={reset}> Clear </button>
+      <button className={styles['post-submit-button']} type="button" disabled={pristine || submitting}
+              onClick={reset}> Clear
+      </button>
     </form>
   )
 };

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import _ from 'lodash';
-import styles from './CustomerListPage.css';
+import styles from './style/CustomerListPage.css';
 
 import {fetchCustomers, toggleAddCustomer, addCustomer, deleteCustomer} from "../../CustomerActions";
 import {getCustomers} from "../../CustomerReducer";

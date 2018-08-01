@@ -11,6 +11,8 @@ const customer = new Schema({
   cuid: {type: 'String', required: true},
   dateAdded: { type: 'Date', default: Date.now, required: true },
   searchValue: {type: 'String' , required: false},
+  regoDate: { type: 'Date', default: Date.now, required: false },
+  firstReminderDate: { type: 'Date', default: Date.now, required: false },
 });
 
 export default mongoose.model('Customer', customer);
