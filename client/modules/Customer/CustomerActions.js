@@ -4,6 +4,7 @@ export const LIST_CUSTOMER = 'LIST_CUSTOMER';
 export const ADD_CUSTOMER = 'ADD_CUSTOMER';
 export const TOGGLE_ADD_CUSTOMER = 'TOGGLER';
 export const DELETE_CUSTOMER = 'DELETE_CUSTOMER';
+export const SEND_EMAIL = 'SEND_EMAIL';
 
 export function toggleAddCustomer() {
   return {
@@ -58,12 +59,29 @@ export function deleteCustomerAction(email) {
   }
 }
 
+export function sendEmailAction(email) {
+  return {
+    type: SEND_EMAIL,
+    email
+  }
+}
+
+
 export function deleteCustomer(email) {
   return (dispatch) => {
     return callApi('deleteCustomer', 'post', {
-      customer:{
+      customer: {
         email: email
       }
     }).then(res => dispatch(deleteCustomerAction(email)));
+  }
+}
+
+export function sendEmail(email) {
+  console.log("trying to send email");
+  return (dispatch) => {
+    return callApi('sendEmail', 'post', {
+      to: email, message: "Hello"
+    }).then(res => dispatch(sendEmailAction(email)));
   }
 }

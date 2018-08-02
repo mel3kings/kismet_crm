@@ -1,7 +1,7 @@
 import Event from '../models/event';
 import cuid from 'cuid';
 
-export function saveEvent(eventDetails, customer_cuid, type="admin"){
+export function saveEvent(eventDetails, customer_cuid ="0", type="admin"){
   console.log("Recieved event :" + eventDetails);
   const event = new Event();
   event.event_details = eventDetails;

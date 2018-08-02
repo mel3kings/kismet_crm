@@ -1,5 +1,6 @@
 import Customer from '../models/customer';
 import {saveEvent} from './event.controller';
+import {sendEmail} from "./email.controller";
 import sanitizeHtml from 'sanitize-html';
 import cuid from 'cuid';
 

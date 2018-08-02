@@ -72,6 +72,16 @@ textarea {
   border-radius: 4px;
 }
 
+.post-email-button {
+  display: inline;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: #FFF;
+  background: lightgray;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
 
 .appear {
   padding: 10px 10px;

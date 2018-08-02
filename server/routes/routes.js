@@ -2,6 +2,7 @@ import {Router} from 'express';
 import * as PostController from '../controllers/post.controller';
 import * as CustomerController from '../controllers/customer.controller';
 import * as EventController from '../controllers/event.controller';
+import * as EmailController from '../controllers/email.controller';
 
 const router = new Router();
 
@@ -16,5 +17,5 @@ router.route('/deleteCustomer').post(CustomerController.deleteCustomer);
 router.route('/search').post(CustomerController.searchCustomer);
 
 router.route('/events').get(EventController.getLatestEvents);
-
+router.route('/sendEmail').post(EmailController.sendEmailAPI);
 export default router;

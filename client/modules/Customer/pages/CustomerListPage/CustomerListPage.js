@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import _ from 'lodash';
 import styles from './style/CustomerListPage.css';
 
-import {fetchCustomers, toggleAddCustomer, addCustomer, deleteCustomer} from "../../CustomerActions";
+import {fetchCustomers, toggleAddCustomer, addCustomer, deleteCustomer,sendEmail} from "../../CustomerActions";
 import {getCustomers} from "../../CustomerReducer";
 import CustomerForm from './CustomerForm';
 
@@ -18,6 +18,11 @@ class CustomerListPage extends Component {
 
   handleDelete = (email) => {
     this.props.dispatch(deleteCustomer(email));
+  };
+
+  handleEmail = (email) =>{
+    this.props.dispatch(sendEmail(email));
+    alert("Reminder Email has been Sent");
   };
 
 
@@ -71,16 +76,23 @@ class CustomerListPage extends Component {
     return _.map(this.props.customerData, data => {
       return (
         <div>
+
           <a href="#" className={styles['post-delete-button']} onClick={() => {
             this.handleDelete(data.email)
           }}>
             Delete
           </a>
+
           <p className={styles['customer-name']}>{data.title} {data.firstName} {data.lastName}</p>
           <p className={styles['customer-desc']}>Email: {data.email}
             <br/> Telephone: {data.telephone}
             <br/> Date Added: {new Date(data.dateAdded).toLocaleString()}
           </p>
+          <a href="#" className={styles['post-email-button']} onClick={()=>{
+            this.handleEmail(data.email);
+          }} >
+            Send Email
+          </a>
           <hr className={styles.divider}/>
         </div>
       );

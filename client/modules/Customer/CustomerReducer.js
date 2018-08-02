@@ -1,4 +1,4 @@
-import {LIST_CUSTOMER, ADD_CUSTOMER, TOGGLE_ADD_CUSTOMER, DELETE_CUSTOMER} from "./CustomerActions";
+import {LIST_CUSTOMER, ADD_CUSTOMER, TOGGLE_ADD_CUSTOMER, DELETE_CUSTOMER, SEND_EMAIL} from "./CustomerActions";
 
 const initialState = {showAddData: false, data: []};
 
@@ -27,6 +27,12 @@ const CustomerReducer = (state = initialState, action) => {
         ...state,
         data: state.data.filter(customer => customer.email !== action.email),
         showAddData: false
+      };
+
+    case SEND_EMAIL:
+      return{
+        ...state,
+        data: state.data
       };
 
     default:
