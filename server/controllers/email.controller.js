@@ -3,17 +3,19 @@ import {saveEvent} from "./event.controller";
 const nodemailer = require('nodemailer');
 const EMAIL_ROBOT = 'emailrobot705@gmail.com';
 const SERVICE = 'gmail';
+const PASSWORD = 'testing_1234';
 
 
 const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
   service: SERVICE,
   auth: {
     user: EMAIL_ROBOT,
-    pass: 'password_705'
+    pass: PASSWORD
   }
 });
 
-export function sendEmail(to="meltatlonghari3@gmail.com", message="Message not found") {
+export function sendEmail(to = "meltatlonghari3@gmail.com", message = "Message not found") {
   console.log("received request to email");
   let mailOptions = {
     from: EMAIL_ROBOT,
